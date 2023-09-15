@@ -37,10 +37,17 @@ numUser = parseInt(prompt('Inserisci un numero'));
 
 // 3. Creo la funzione randomizer per il numero del computer
 
-numPC = Math.ceil(Math.random() * 5);
+randomizer();
+
+function randomizer(){
+  numPC = Math.ceil(Math.random() * 5);
+};
+
+
 console.log(numPC);
 
 // 4. Sommo i due numeri
 
 somma += numUser + numPC;
 console.log(somma);
+
