@@ -2,26 +2,24 @@
       PALINDROMA
 *********************/
 // 1. Creo una costante con un prompt dove chiedo il nome all'utente
-
 //DISABILITATO PER TESTARE 'PARI E DISPARI'
-// const nameUser = prompt('Inserisci il tuo nome'); 
-const nameUser = 'anna'; //cancella questa riga e abilita quella superiore per attivare
+// const wordUser = prompt('Inserisci la parola da verificare'); 
+const wordUser = 'anna'; 
 
-inverti(nameUser);
-// console.log(inverti(nameUser));
-
+const invertedName = inverti(wordUser);
 
 // 2.
 function inverti(text) {
   return text.split('').reverse().join('');
 };
 
-isPali();
+isPali(wordUser);
+console.log ('la parola è palindroma?', isPali(wordUser));
 
 // 3.
-function isPali(x) {
-  x = (nameUser == inverti(nameUser) ? true : false);
-  console.log(x);
+function isPali(parola) {
+  return parola = wordUser == invertedName;
+  // console.log(x);
 }
 
 
@@ -37,8 +35,8 @@ numUser = parseInt(prompt('Inserisci un numero'));
 userTake = prompt('Pari o dispari?');
 
 // 3. Creo la funzione randomizer per il numero del computer
-randomizer();
-isDispari(somma);
+const randNum = randomizer();
+isPari(somma);
 
 
 console.log(numPC);
@@ -47,22 +45,48 @@ console.log(numPC);
 somma += numUser + numPC;
 console.log(somma);
 
+const loseMessage = 'Ha vinto il computer!';
+const winMessage = 'Hai vinto!';
+
+
+
+// 6b.
+const outputPara = document.createElement('p');
+document.querySelector('body').append(outputPara);
+
 
 // 6. Stampo il vincitore
-if (isDispari(somma) && userTake == isDispari(somma)) {
-  console.log('hai vinto!');
+const output = document.querySelector('p');
+
+
+output.innerHTML = `
+  Hai giocato <strong>${numUser}</strong> e hai scelto <strong>${userTake}</strong>. <br>
+  Il computer ha giocato <strong>${numPC}</strong>. Il risultato è <strong>${somma}</strong>. <br>
+`;
+
+
+console.log('CHECK isPari', isPari(somma));
+
+
+if (userTake === 'dispari' && isPari(somma) || userTake === 'pari' && !isPari(somma)) {
+
+  output.innerHTML += `Hai vinto tu`;
+  
+} else {
+  
+  output.innerHTML += `Ha vinto il computer`;
+
 }
-else {
-  console.log('ha vinto il computer!');
-}
+
+
 
 
 function randomizer(){
-  numPC = Math.ceil(Math.random() * 5);
+  return numPC = Math.ceil(Math.random() * 5);
 };
 
 // 5. Verifico se la somma è pari o dispari
-function isDispari(num) {
-  return num = somma % 2 ? 'dispari' : 'pari';
+function isPari(num) {
+  return num % 2;
 }
-console.log(isDispari(somma));
+console.log(isPari(somma));
